@@ -1,1 +1,195 @@
+@font-face {
+  font-family: "dh";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_06@1.0/Hardworking_donghee.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
+:root {
+  --card-width: 400px;
+  --card-height: calc(var(--card-width) * 0.625);
+  --muted-light: #e6e7e9;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 254, 234, 1) 0%,
+    rgba(255, 254, 234, 1) 35%,
+    #b7e8eb 100%
+  );
+  overflow: hidden;
+}
+
+.wrapper {
+  padding-top: calc((100vh - 600px) / 2);
+  font-family: "dh";
+  height: 600px;
+  min-width: 800px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  user-select: none;
+  position: relative;
+  width: calc(var(--card-width) * 2);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card__wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: var(--card-width);
+  perspective: 1200px;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+  transition-delay: 0.2s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  transform-origin: center;
+}
+
+.card__top {
+  overflow: hidden;
+  display: inline-block;
+  transform: rotateX(0) translateY(107px) translateZ(-122px);
+  width: var(--card-width);
+  height: var(--card-height);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform-origin: bottom;
+}
+
+.card__top__img__bg,
+.card__top__img__1,
+.card__top__img__2,
+.card__top__img__3,
+.card__top__img__4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: var(--card-width);
+  height: var(--card-height);
+}
+
+.card__top__img__1 {
+  transform: rotateX(-5deg) translateY(120px) translateZ(-80px);
+}
+
+.card__top__img__2 {
+  transform: rotateX(-5deg) translateY(105px) translateZ(-50px);
+}
+
+.card__top__img__3 {
+  transform: rotateX(-5deg) translateY(160px) translateZ(-20px);
+}
+
+.card__bottom {
+  display: inline-block;
+  transform: rotateX(80deg);
+  width: var(--card-width);
+  height: var(--card-height);
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card__bottomTxt {
+  color: #000;
+  margin-top: 20%;
+  font-size: 32px;
+}
+
+.description {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.paper {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgb(0 0 0 / 20%);
+  transition: all 235ms ease-in-out 0s;
+  color: #41403e;
+  border-color: #41403e;
+  align-self: center;
+  background-image: none;
+  border-style: solid;
+  border-width: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.paper:hover {
+  transform: translate3d(0, 2px, 0);
+  box-shadow: 2px 8px 8px -5px rgba(0, 0, 0, 0.3);
+}
+.mobile{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper{
+    display: none;
+  }
+  .mobile{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "dh";
+    font-size: 2rem;
+    overflow: hidden;
+  }
+}
+
+.balloons {
+  -moz-animation: ballonBounce 3.2s infinite linear;
+  -webkit-animation: ballonBounce 3.2s infinite linear;
+  -o-animation: ballonBounce 3.2s infinite linear;
+  animation: ballonBounce 3.2s infinite linear;
+}
+
+@keyframes ballonBounce {
+  0% {
+    top: 0px;
+  }
+  40% {
+    top: -25px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.balloons2 {
+  -moz-animation: ballonBounce2 4.2s infinite linear;
+  -webkit-animation: ballonBounce2 4.2s infinite linear;
+  -o-animation: ballonBounce2 4.2s infinite linear;
+  animation: ballonBounce2 4.2s infinite linear;
+}
+
+@keyframes ballonBounce2 {
+  20% {
+    top: 0px;
+  }
+  60% {
+    top: -15px;
+  }
+  100% {
+    top: 0px;
+  }
+}
