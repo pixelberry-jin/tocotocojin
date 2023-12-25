@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="tocotoco/css/card.css" />
+    <link rel="stylesheet" href="tocotoco/css/fire.css" />
+    <title>Message from Tocotoco 💌</title>
+    <meta property="og:title" content="Message from Tocotoco 💌" />
+    <meta
+      property="og:description"
+      content="Message from Tocotoco 💌"
+    />
+    <meta
+      property="og:image"
+      content="https://tocotocojin.netlify.app/image.webp"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body onload="init()" onresize="init()">
+    <div class="wrapper">
+      <div
+        id="card"
+        class="card paper"
+        onmousemove="handleMouseMove()"
+        onmouseleave="reset()"
+        ontouchstart="handleMouseMove()"
+        ontouchmove="handleMouseMove()"
+        ontouchend="reset()"
+      >
+        <div id="card__wrapper" class="card__wrapper" style="transform: rotateX(-10deg) rotateY(0deg)">
+          <div id="card__top" class="card__top">
+            <img class="card__top__img__bg" src="tocotoco/images/bg.webp" alt="배경 이미지" />
+          </div>
+          <img class="card__top__img__1 balloons" src="tocotoco/images/toco_1.webp" alt="toco" />
+          <img class="card__top__img__2 balloons2" src="tocotoco/images/toco_2.webp" alt="toco" />
+          <img class="card__top__img__3" src="tocotoco/images/tree.webp" alt="trees" />
+          <div id="card__bottom" class="card__bottom">
+            <p class="card__bottomTxt">
+              <b>Merry christmas 🎄</b>
+              <span style="
+                  display: inline-block;
+                  font-size: 22px;
+                  padding-top: 26px;
+                "> Wishing you the happiest holidays <br /> and a wonderful New Year in 2024! </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="description">Move the mouse inside the box!</div>
+    </div>
+
+    <script>
+      let $cardWrapper;
+let $cardTop, $cardBottom;
+let centerY, centerX;
+
+function init() {
+  $card = document.getElementById("card");
+  $cardWrapper = document.getElementById("card__wrapper");
+  $cardTop = document.getElementById("card__top");
+  $cardBottom = document.getElementById("card__bottom");
+
+  // 중앙 좌표값
+  centerY = $cardTop.getBoundingClientRect().bottom;
+  centerX =
+    $cardTop.getBoundingClientRect().left +
+    ($cardTop.getBoundingClientRect().right -
+      $cardTop.getBoundingClientRect().left) /
+    2;
+}
+
+function reset() {
+  $cardWrapper.style = "transform: rotateX(-10deg) rotateY(0deg);";
+}
+
+function handleMouseMove(event) {
+  let eventDoc, doc, body;
+
+  event = event || window.event;
+
+  // 마우스 좌표
+  // touch event 분기처리
+  let pageX = event.pageX ?? event.changedTouches[0].pageX;
+  let pageY = event.pageY ?? event.changedTouches[0].pageY;
+
+  let rotateX, rotateY;
+
+  // rotateX
+  if (pageX <= centerX) {
+    // 중앙 좌표값보다 작을 때
+    rotateX = (centerX - pageX) * 0.4;
+    rotateX > 80 ? (rotateX = 80) : (rotateX = rotateX);
+  } else {
+    // 중앙 좌표값보다 클 때
+    rotateX = (centerX - pageX) * 0.4;
+    rotateX < -80 ? (rotateX = -80) : (rotateX = rotateX);
+  }
+
+  // rotateY
+  if (pageY <= centerY) {
+    // 중앙 좌표값보다 작을 때
+    rotateY = (centerY - pageY) * 0.3;
+    rotateY > 20 ? (rotateY = 20) : (rotateY = rotateY);
+  } else {
+    // 중앙 좌표값보다 클 때
+    rotateY = (centerY - pageY) * 0.3;
+    rotateY < -40 ? (rotateY = -40) : (rotateY = rotateY);
+  }
+
+  $cardWrapper.style =
+    "transform: rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg);";
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    drawFireWork();
+  });
+  </script>
+  </body>
+</html>
